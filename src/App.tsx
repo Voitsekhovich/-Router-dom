@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Navigate, Route, Router, Routes } from "react-router";
+import { NavLink } from "react-router-dom";
 import { Error404 } from "./components/pages/Error404";
 import { PageOne } from "./components/pages/PageOne";
 import { PageThree } from "./components/pages/PageThree";
@@ -13,7 +14,11 @@ function App() {
         <h1>HEADER</h1>
       </div>
       <div className={styles.body}>
-        <div className={styles.nav}>Здесь будет навигация</div>
+        <div className={styles.nav}>
+            <div><NavLink to={"/page1"}>Page1</NavLink></div>
+            <div><NavLink to={"/page2"}>Page2</NavLink></div>
+            <div><NavLink to={"/page3"}>Page3</NavLink></div>
+          </div>
         <div className={styles.content}>
           <Routes>
             <Route path="/" element={<Navigate to={"/page1"}/> }/>
