@@ -3,18 +3,20 @@ import { Navigate, Route, Router, Routes } from "react-router";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { Error404 } from "./components/pages/Error404";
-import { PageOne } from "./components/pages/PageOne";
-import { PageThree } from "./components/pages/PageThree";
-import { PageTwo } from "./components/pages/PageTwo";
+import { PageOne } from "./components/pages/Adidas";
+import { PageThree } from "./components/pages/Abibas";
+import { PageTwo } from "./components/pages/Puma";
 import { S } from "./components/pages/_styles";
 import styles from "./components/Site.module.css";
+import { Model } from "./components/pages/Model";
 
 
 const PATH = {
-    PAGE1: "/page1",
-    PAGE2: "/page2",
-    PAGE3: "/page3",
+    PAGE1: "/ADIDAS",
+    PAGE2: "/PUMA",
+    PAGE3: "/ABIBAS",
     EROR404: "/Error404"
+    
 } as const 
 
 function App() {
@@ -25,9 +27,9 @@ function App() {
       </div>
       <div className={styles.body}>
         <div className={styles.nav}>
-            <S.NavWrapper><NavLink  to={PATH.PAGE1}>Page1</NavLink></S.NavWrapper>
-            <S.NavWrapper><NavLink to={PATH.PAGE2} >Page2</NavLink></S.NavWrapper>
-            <S.NavWrapper><NavLink  to={PATH.PAGE3}>Page3</NavLink></S.NavWrapper>
+            <S.NavWrapper><NavLink  to={PATH.PAGE1}>ADIDAS</NavLink></S.NavWrapper>
+            <S.NavWrapper><NavLink to={PATH.PAGE2} >PUMA</NavLink></S.NavWrapper>
+            <S.NavWrapper><NavLink  to={PATH.PAGE3}>ABIBAS</NavLink></S.NavWrapper>
           </div>
         <div className={styles.content}>
           <Routes>
@@ -36,7 +38,10 @@ function App() {
             <Route path={PATH.PAGE2} element={<PageTwo />} />
             <Route path={PATH.PAGE3} element={<PageThree />} />
             <Route path={PATH.EROR404} element={<Error404 />} />
-            <Route path="/*" element={<Navigate to={PATH.EROR404} />} />
+            <Route path={"/*"} element={<Error404 />} />
+
+{/*             <Route path="/*" element={<Navigate to={PATH.EROR404} />} />
+ */}            <Route path={'/ADIDAS/:id'} element={<Model/>}/>
           </Routes>
         </div>
       </div>
