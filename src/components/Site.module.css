@@ -40,7 +40,7 @@
     color: #282c34;
 }
 
-.nav a.active {
+.active {
     color: #7fb8f1;
     text-decoration: underline;
 }
