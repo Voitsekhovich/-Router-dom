@@ -11,6 +11,6 @@ type Props ={
 export const ProtectedRoute=({children}:Props)=>{
 
 
-    const logged =true
-    return (<div>{logged?children:<Navigate to ={'/error'}/>}</div>)
+    const logged =false
+    return (<div>{logged?children:<Navigate to ={'/login'}/>}</div>)
 }
