@@ -86,7 +86,7 @@ export const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
-        errorElement: <Navigate to={PATH.ERROR} />,
+        errorElement: <Navigate to={PATH.ADIDAS} />,
         children: [
             {
                 element: <PrivateRoute />,

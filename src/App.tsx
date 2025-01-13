@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styles from "./components/Site.module.css";
-import {Adidas} from "./components/pages/Adidas";
-import {Puma} from "./components/pages/Puma";
-import {Abibas} from "./components/pages/Abibas";
-import {Navigate, NavLink, Outlet, Route, Routes} from 'react-router-dom';
-import {Error404} from "./components/pages/Error404";
+import { Adidas } from "./components/pages/Adidas";
+import { Puma } from "./components/pages/Puma";
+import { Abibas } from "./components/pages/Abibas";
+import { Link, Navigate, NavLink, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
+import { Error404 } from "./components/pages/Error404";
 import styled from 'styled-components';
-import {S} from './components/pages/_styles'
-import {Model} from "./components/pages/Model";
-import {Prices} from "./components/pages/Prices";
+import { S } from './components/pages/_styles'
+import { Model } from "./components/pages/Model";
+import { Prices } from "./components/pages/Prices";
 
 
 const PATH = {
@@ -22,6 +22,10 @@ const PATH = {
 } as const
 
 function App() {
+    const navigate =useNavigate()
+    const navigateHandler =()=>{
+        navigate(-1)
+    }
     return (
         <div>
             <div className={styles.header}><h1>HEADER</h1></div>
@@ -35,25 +39,11 @@ function App() {
 
                 </div>
                 <div className={styles.content}>
-                    <Outlet/>
-{/*                     <Routes>
- */}{/*                         <Route path={'/'} element={<Navigate to={PATH.PAGE1}/>}/>
- */}
-{/*                         <Route path={PATH.PAGE1} element={<Adidas/>}/>
-                        <Route path={PATH.PAGE2} element={<Puma/>}/>
-                        <Route path={PATH.PAGE3} element={<Abibas/>}/>
- */}{/*                         <Route path={PATH.PAGE4} element={<Prices/>}/>
- */}
-                        {/*<Route path={'/adidas/:id'} element={<Model/>}/>*/}
-{/*                         <Route path={'/:model/:id'} element={<Model/>}/>
- */}
-{/*                         <Route path={'/*'} element={<Error404/>}/> */}
-
-                        {/*<Route path={'/page/error'} element={<Error404/>}/>*/}
-                        {/*<Route path={'/*'} element={<Navigate to={'/page/error'}/>}/>*/}
-{/*                     </Routes>
- */}
+                    <div className={styles.HorizontalNavigation}></div>
+                    <S.NavWrapper><NavLink className={styles.LinkLikeButton} to={PATH.PAGE1}>Main Page</NavLink></S.NavWrapper>
+                    <Outlet />
                 </div>
+                <button  onClick={navigateHandler} className={styles.ButtonLikeLink}>Back</button>
             </div>
             <div className={styles.footer}>abibas 2023</div>
         </div>
